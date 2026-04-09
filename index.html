@@ -178,7 +178,7 @@
       align-items: flex-end;
       justify-content: center;
       padding-bottom: 80px;
-      background: url('images/hero-bg.jpg') center center / cover no-repeat;
+      background: var(--black) center center / cover no-repeat;
     }
     .hero::after {
       content: '';
@@ -303,6 +303,7 @@
       display: block;
       filter: grayscale(30%);
       transition: filter 0.4s;
+      cursor: zoom-in;
     }
     .crane-card:hover .crane-card-img { filter: grayscale(0%); }
 
@@ -618,6 +619,67 @@
     }
     .seo-block p { margin-bottom: 14px; }
 
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0,0,0,0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      cursor: zoom-out;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border: 1px solid var(--yellow);
+      box-shadow: 0 0 30px rgba(212,160,23,0.15);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 32px;
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ===== SCROLL TO TOP ===== */
+    .scroll-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 998;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--black-card);
+      border: 1px solid var(--gray-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, border-color 0.3s;
+    }
+    .scroll-top.visible { opacity: 1; pointer-events: all; }
+    .scroll-top:hover { border-color: var(--yellow); }
+    .scroll-top svg { width: 20px; height: 20px; stroke: var(--white); fill: none; }
+
     /* ===== ANIMATIONS ===== */
     .fade-up {
       opacity: 0;
@@ -887,7 +949,7 @@
   <!-- ПРЕИМУЩЕСТВА -->
   <section id="preimushchestva">
     <h2 class="section-title fade-up" data-ru="ПОЧЕМУ ВЫБИРАЮТ НАС" data-kz="БІЗДІ НЕГЕ ТАҢДАЙДЫ">ПОЧЕМУ ВЫБИРАЮТ НАС</h2>
-    <p class="section-sub fade-up" data-ru="Надёжная техника, опытные крановщики, работа по всему Казахстану" data-kz="Сенімді техника, тәжірибелі крановщиктер, бүкіл Қазақстан бойынша жұмыс">Надёжная техника, опытные крановщики, работа по всему Казахстану</p>
+    <p class="section-sub fade-up" data-ru="Надёжная техника, опытные крановщики, работа по Астане и области" data-kz="Сенімді техника, тәжірибелі крановщиктер, Астана және аймақ бойынша жұмыс">Надёжная техника, опытные крановщики, работа по Астане и области</p>
     <div class="advantages-grid">
       <div class="advantage-item fade-up">
         <h3 data-ru="ТЕХНИКА SANY И XCMG" data-kz="SANY ЖӘНЕ XCMG ТЕХНИКАСЫ">ТЕХНИКА SANY И XCMG</h3>
@@ -902,8 +964,8 @@
         <p data-ru="Быстрая доставка автокрана на объект. Работаем круглосуточно без выходных. Подача техники в течение нескольких часов" data-kz="Автокранды объектіге жылдам жеткізу. Демалыссыз тәулік бойы жұмыс. Техниканы бірнеше сағат ішінде жеткізу">Быстрая доставка автокрана на объект. Работаем круглосуточно без выходных. Подача техники в течение нескольких часов</p>
       </div>
       <div class="advantage-item fade-up">
-        <h3 data-ru="ВСЯ ТЕРРИТОРИЯ КАЗАХСТАНА" data-kz="БҮКІЛ ҚАЗАҚСТАН АУМАҒЫ">ВСЯ ТЕРРИТОРИЯ КАЗАХСТАНА</h3>
-        <p data-ru="Работаем по всему Казахстану: Астана, Алматы, Караганда, Шымкент, Атырау, Актау, Костанай и другие города и регионы" data-kz="Бүкіл Қазақстан бойынша жұмыс: Астана, Алматы, Қарағанды, Шымкент, Атырау, Ақтау, Қостанай және басқа қалалар мен аймақтар">Работаем по всему Казахстану: Астана, Алматы, Караганда, Шымкент, Атырау, Актау, Костанай и другие города и регионы</p>
+        <h3 data-ru="АСТАНА И ДО 100 КМ" data-kz="АСТАНА ЖӘНЕ 100 КМ ДЕЙІН">АСТАНА И ДО 100 КМ</h3>
+        <p data-ru="Работаем по городу Астана и в радиусе до 100 км: пригородные посёлки, промышленные зоны, строительные площадки Акмолинской области" data-kz="Астана қаласы бойынша және 100 км радиуста жұмыс: қала маңы ауылдары, өнеркәсіптік аймақтар, Ақмола облысының құрылыс алаңдары">Работаем по городу Астана и в радиусе до 100 км: пригородные посёлки, промышленные зоны, строительные площадки Акмолинской области</p>
       </div>
     </div>
   </section>
@@ -938,9 +1000,9 @@
   <!-- SEO ТЕКСТОВЫЙ БЛОК -->
   <div class="seo-block">
     <h2 data-ru="АРЕНДА АВТОКРАНА В КАЗАХСТАНЕ" data-kz="ҚАЗАҚСТАНДА АВТОКРАН ЖАЛДАУ">АРЕНДА АВТОКРАНА В КАЗАХСТАНЕ</h2>
-    <p data-ru="Наша компания предоставляет услуги аренды автокранов SANY и XCMG на территории всего Казахстана. В автопарке представлены автокраны грузоподъёмностью от 50 до 230 тонн с вылетом стрелы от 41 до 109 метров. Техника подходит для строительства жилых и коммерческих зданий, монтажа промышленного оборудования, возведения инфраструктурных объектов, работы на нефтегазовых и энергетических объектах." data-kz="Біздің компания бүкіл Қазақстан аумағында SANY және XCMG автокрандарын жалдау қызметтерін ұсынады. Автопаркта 50-ден 230 тоннаға дейінгі жүккөтергіштікті, 41-ден 109 метрге дейінгі жебе ұзындығы бар автокрандар бар.">Наша компания предоставляет услуги аренды автокранов SANY и XCMG на территории всего Казахстана. В автопарке представлены автокраны грузоподъёмностью от 50 до 230 тонн с вылетом стрелы от 41 до 109 метров. Техника подходит для строительства жилых и коммерческих зданий, монтажа промышленного оборудования, возведения инфраструктурных объектов, работы на нефтегазовых и энергетических объектах.</p>
-    <h3 data-ru="Автокраны в Астане и Алматы" data-kz="Астана мен Алматыдағы автокрандар">Автокраны в Астане и Алматы</h3>
-    <p data-ru="Заказать автокран в Астане и Алматы можно круглосуточно. Мы обеспечиваем оперативную подачу техники на строительные площадки, промышленные объекты и территории складских комплексов. Автокраны SANY STC500, SANY STC800, SANY SAC2200, XCMG XCT55L6, XCMG XCT80 и XCMG XCA230 доступны для аренды с опытным крановщиком." data-kz="Астана мен Алматыда автокранға тапсырыс беруге тәулік бойы болады. Біз құрылыс алаңдарына, өнеркәсіптік объектілерге және қойма кешендерінің аумағына техниканы жедел жеткіземіз.">Заказать автокран в Астане и Алматы можно круглосуточно. Мы обеспечиваем оперативную подачу техники на строительные площадки, промышленные объекты и территории складских комплексов. Автокраны SANY STC500, SANY STC800, SANY SAC2200, XCMG XCT55L6, XCMG XCT80 и XCMG XCA230 доступны для аренды с опытным крановщиком.</p>
+    <p data-ru="Наша компания предоставляет услуги аренды автокранов SANY и XCMG в городе Астана и в радиусе до 100 км. В автопарке представлены автокраны грузоподъёмностью от 50 до 230 тонн с вылетом стрелы от 41 до 109 метров. Техника подходит для строительства жилых и коммерческих зданий, монтажа промышленного оборудования, возведения инфраструктурных объектов, работы на нефтегазовых и энергетических объектах." data-kz="Біздің компания Астана қаласында және 100 км радиуста SANY және XCMG автокрандарын жалдау қызметтерін ұсынады. Автопаркта 50-ден 230 тоннаға дейінгі жүккөтергіштікті, 41-ден 109 метрге дейінгі жебе ұзындығы бар автокрандар бар.">Наша компания предоставляет услуги аренды автокранов SANY и XCMG в городе Астана и в радиусе до 100 км. В автопарке представлены автокраны грузоподъёмностью от 50 до 230 тонн с вылетом стрелы от 41 до 109 метров. Техника подходит для строительства жилых и коммерческих зданий, монтажа промышленного оборудования, возведения инфраструктурных объектов, работы на нефтегазовых и энергетических объектах.</p>
+    <h3 data-ru="Автокраны в Астане" data-kz="Астанадағы автокрандар">Автокраны в Астане</h3>
+    <p data-ru="Заказать автокран в Астане можно круглосуточно. Мы обеспечиваем оперативную подачу техники на строительные площадки, промышленные объекты и территории складских комплексов в городе и в радиусе до 100 км. Автокраны SANY STC500, SANY STC800, SANY SAC2200, XCMG XCT55L6, XCMG XCT80 и XCMG XCA230 доступны для аренды с опытным крановщиком." data-kz="Астанада автокранға тапсырыс беруге тәулік бойы болады. Біз қалада және 100 км радиуста құрылыс алаңдарына, өнеркәсіптік объектілерге және қойма кешендерінің аумағына техниканы жедел жеткіземіз.">Заказать автокран в Астане можно круглосуточно. Мы обеспечиваем оперативную подачу техники на строительные площадки, промышленные объекты и территории складских комплексов в городе и в радиусе до 100 км. Автокраны SANY STC500, SANY STC800, SANY SAC2200, XCMG XCT55L6, XCMG XCT80 и XCMG XCA230 доступны для аренды с опытным крановщиком.</p>
     <h3 data-ru="Крановые работы для нефтегазовой отрасли" data-kz="Мұнай-газ саласы үшін кран жұмыстары">Крановые работы для нефтегазовой отрасли</h3>
     <p data-ru="Выполняем крановые работы на нефтеперерабатывающих заводах, буровых площадках, компрессорных станциях и объектах энергетической инфраструктуры. Автокраны XCMG XCA230 и SANY SAC2200 с грузоподъёмностью 220–230 тонн и вылетом стрелы до 109 метров обеспечивают монтаж тяжёлого оборудования любой сложности." data-kz="Мұнай өңдеу зауыттарында, бұрғылау алаңдарында, компрессорлық станцияларда және энергетикалық инфрақұрылым объектілерінде кран жұмыстарын орындаймыз.">Выполняем крановые работы на нефтеперерабатывающих заводах, буровых площадках, компрессорных станциях и объектах энергетической инфраструктуры. Автокраны XCMG XCA230 и SANY SAC2200 с грузоподъёмностью 220–230 тонн и вылетом стрелы до 109 метров обеспечивают монтаж тяжёлого оборудования любой сложности.</p>
   </div>
@@ -954,8 +1016,8 @@
         <a href="tel:+77057150822">+7 705 715 0822</a>
       </div>
       <div class="contacts-info">
-        <p data-ru="Работаем круглосуточно, без выходных" data-kz="Демалыссыз, тәулік бойы жұмыс істейміз">Работаем круглосуточно, без выходных</p>
-        <p data-ru="Казахстан — Астана, Алматы и все регионы" data-kz="Қазақстан — Астана, Алматы және барлық аймақтар">Казахстан — Астана, Алматы и все регионы</p>
+        <p data-ru="Работаем по Астане и в радиусе 100 км от города" data-kz="Астана бойынша және қаладан 100 км радиуста жұмыс істейміз">Работаем по Астане и в радиусе 100 км от города</p>
+        <p data-ru="Астана и пригород — круглосуточно, без выходных" data-kz="Астана және қала маңы — демалыссыз, тәулік бойы">Астана и пригород — круглосуточно, без выходных</p>
       </div>
       <a href="https://wa.me/77020156562?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%B0%D1%80%D0%B5%D0%BD%D0%B4%D0%B0%20%D0%B0%D0%B2%D1%82%D0%BE%D0%BA%D1%80%D0%B0%D0%BD%D0%B0" target="_blank" class="contacts-wa" data-ru="НАПИСАТЬ В WHATSAPP" data-kz="WHATSAPP ЖАЗУ">НАПИСАТЬ В WHATSAPP</a>
     </div>
@@ -963,7 +1025,7 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <p>&copy; 2026 <span data-ru="Автокраны — аренда автокранов SANY и XCMG в Казахстане" data-kz="Автокрандар — Қазақстанда SANY және XCMG автокрандарын жалдау">Автокраны — аренда автокранов SANY и XCMG в Казахстане</span></p>
+    <p>&copy; 2026 <span data-ru="Автокраны — аренда автокранов SANY и XCMG в Астане" data-kz="Автокрандар — Астанада SANY және XCMG автокрандарын жалдау">Автокраны — аренда автокранов SANY и XCMG в Астане</span></p>
   </footer>
 
   <!-- FAB -->
@@ -981,7 +1043,26 @@
     </div>
   </div>
 
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" aria-label="Закрыть">&times;</button>
+    <img src="" alt="" id="lightboxImg">
+  </div>
+
+  <!-- SCROLL TO TOP -->
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Наверх">
+    <svg viewBox="0 0 24 24" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
   <script>
+    // Random hero background from 6 images
+    const heroImages = [
+      'images/hero-1.jpg','images/hero-2.jpg','images/hero-3.jpg',
+      'images/hero-4.jpg','images/hero-5.jpg','images/hero-6.jpg'
+    ];
+    const hero = document.querySelector('.hero');
+    hero.style.backgroundImage = 'url(' + heroImages[Math.floor(Math.random() * heroImages.length)] + ')';
+
     // Hamburger menu
     const hamburgerBtn = document.getElementById('hamburgerBtn');
     const menuOverlay = document.getElementById('menuOverlay');
@@ -1005,12 +1086,32 @@
       if (!fab.contains(e.target)) fab.classList.remove('open');
     });
 
+    // Lightbox
+    document.querySelectorAll('.crane-card-img').forEach(img => {
+      img.addEventListener('click', () => {
+        const lb = document.getElementById('lightbox');
+        document.getElementById('lightboxImg').src = img.src;
+        document.getElementById('lightboxImg').alt = img.alt;
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 600);
+    });
+
     // Scroll animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.15 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
@@ -1026,7 +1127,6 @@
       });
       try { localStorage.setItem('lang', currentLang); } catch(e) {}
     }
-    // Restore saved language
     try {
       const saved = localStorage.getItem('lang');
       if (saved === 'kz') toggleLang();

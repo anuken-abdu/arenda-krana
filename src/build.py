@@ -8,7 +8,7 @@ from data import *
 
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist"
-VER = "0311261600"
+VER = "0311261800"
 TODAY = date.today().isoformat()
 E = lambda s: html.escape(str(s), quote=True)
 PAGES = []
@@ -35,32 +35,52 @@ ICON = {
  "send": '<path d="M4 12l16-8-6 16-2.5-6.5z"/>',
 }
 ICON.update({
- "beam": '<path d="M3 7h18M3 17h18M6 7l4 10M10 7l4 10M14 7l4 10"/>',
- "building": '<path d="M3 21V10l9-6 9 6v11"/><path d="M9 21v-6h6v6"/>',
- "box": '<path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/>',
- "tank": '<ellipse cx="12" cy="5" rx="7" ry="2.5"/><path d="M5 5v14c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V5"/>',
- "bolt": '<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
- "tower": '<path d="M12 2v20M8 22l4-14 4 14M6 8h12M9 14h6"/>',
- "bridge": '<path d="M2 18h20M4 18v-5a8 8 0 0 1 16 0v5M9 18v-4M15 18v-4"/>',
- "fan": '<circle cx="12" cy="12" r="9"/><path d="M12 12c0-4 1-6 3-6s1 5-3 6zM12 12c4 0 6 1 6 3s-5 1-6-3zM12 12c0 4-1 6-3 6s-1-5 3-6zM12 12c-4 0-6-1-6-3s5-1 6 3z"/>',
- "board": '<rect x="3" y="4" width="18" height="10" rx="1"/><path d="M8 14v7M16 14v7"/>',
- "truck": '<path d="M2 16V7h11v9M13 10h5l3 3v3h-8"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/>',
- "gear": '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>',
- "weight": '<path d="M7 9h10l3 12H4z"/><circle cx="12" cy="5.5" r="2.5"/>',
- "drop": '<path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/>',
+ "ibeam": '<path d="M5 3.5h14v3.5h-5v10h5v3.5H5V17h5V7H5z"/>',
+ "slab": '<path d="M2.5 9.5L12 5l9.5 4.5L12 14z"/><path d="M2.5 9.5v4L12 18l9.5-4.5v-4"/><path d="M7 12v2.5M12 14v2.5M17 12v2.5"/>',
+ "load": '<path d="M12 2.5v6M9 5.5l3-3 3 3"/><rect x="5" y="11" width="14" height="7" rx="1"/><path d="M3 21h18M9 11v7M15 11v7"/>',
+ "machine": '<rect x="3" y="9" width="12" height="10" rx="1.5"/><path d="M15 12h3.5l2.5 3v4h-6"/><circle cx="9" cy="14" r="2.6"/><path d="M6 9V6h6v3"/>',
+ "tcrane": '<path d="M6 21V4M6 4h15M3 4h3M6 4l4 3.5M10 4v3M18 4v6"/><path d="M16.5 10h3v2.5h-3z"/><path d="M3 21h7M6 9h3M6 14h3"/>',
+ "wind": '<path d="M12 11v10.5M9.5 21.5h5"/><circle cx="12" cy="9" r="1.6"/><path d="M12 7.4V2M13.4 9.9l4.8 2.8M10.6 9.9l-4.8 2.8"/>',
+ "demol": '<path d="M3 21h18M5 21v-9h6v9M14 21v-5h5v5"/><path d="M14 3l6 6M20 3l-6 6"/>',
+ "height": '<path d="M3 21V10l5-4 5 4v11M3 21h10"/><path d="M18 21V4M15 7l3-3 3 3"/><path d="M7 14h2M7 17h2"/>',
+ "hangar": '<path d="M3 20.5V11a9 7 0 0 1 18 0v9.5"/><path d="M2 20.5h20M8 20.5V14h8v6.5M12 14v6.5"/>',
+ "modules": '<rect x="2.5" y="12" width="9.5" height="7.5" rx=".8"/><rect x="12" y="12" width="9.5" height="7.5" rx=".8"/><rect x="7" y="4.5" width="10" height="7.5" rx=".8"/><path d="M5.5 15h3M15 15h3M10.5 7.5h3"/>',
+ "tank": '<ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/>',
+ "transf": '<rect x="5" y="9" width="14" height="11" rx="1.2"/><path d="M8.5 9V5.5M12 9V4M15.5 9V5.5M7 4.5h3M10.5 3h3M14 4.5h3M8.5 12.5v4.5M12 12.5v4.5M15.5 12.5v4.5"/>',
+ "pylon": '<path d="M8.5 22L12 2l3.5 20"/><path d="M4 7h16M6 11.5h12M4 7v2.5M20 7v2.5M6 11.5V14M18 11.5V14M9.6 16h4.8M9 19.5l6-3.5M15 19.5l-6-3.5"/>',
+ "bridge": '<path d="M2 15h20M4 15v5M20 15v5"/><path d="M2 9.5c3 0 5.5 5.5 10 5.5s7-5.5 10-5.5"/><path d="M7 12.6V15M12 15v0M17 12.6V15"/>',
+ "hvac": '<rect x="2.5" y="6" width="19" height="13" rx="1.5"/><circle cx="9" cy="12.5" r="3.6"/><path d="M9 8.9v7.2M5.4 12.5h7.2M15.5 9.5h3M15.5 12.5h3M15.5 15.5h3"/>',
+ "board": '<rect x="3" y="3.5" width="18" height="10" rx="1"/><path d="M8 13.5v8M16 13.5v8M5 21.5h14M7 7.5h10M7 10h6"/>',
+ "mast": '<path d="M12 9v12.5M8.5 21.5L12 9l3.5 12.5M9.7 17h4.6"/><circle cx="12" cy="6.3" r="1.6"/><path d="M8.3 2.8a5.2 5.2 0 0 0 0 7M15.7 2.8a5.2 5.2 0 0 1 0 7"/>',
+ "trailer": '<path d="M2 15.5h13.5l2-3h3.5l1 3v2H2z"/><rect x="4" y="9.5" width="9" height="6"/><circle cx="5.5" cy="18.5" r="1.6"/><circle cx="9.5" cy="18.5" r="1.6"/><circle cx="19" cy="18.5" r="1.6"/>',
+ "container": '<rect x="2" y="6.5" width="20" height="12" rx="1"/><path d="M6 6.5v12M10 6.5v12M14 6.5v12M18 6.5v12"/>',
+ "hookbox": '<path d="M12 2v4.5"/><path d="M10 6.5h4v2.2h-4z"/><path d="M12 8.7v1.8a2 2 0 1 1-2 2"/><rect x="5" y="15" width="14" height="6.5" rx="1"/><path d="M9 15l3-2.5 3 2.5"/>',
+ "weight": '<path d="M5.5 10h13l3 11.5h-19z"/><path d="M9 10a3 3 0 1 1 6 0"/><path d="M10 14.5v4M10 16.5h2.5l1.5-2M12.5 16.5l1.5 2"/>',
+ "derrick": '<path d="M8 21.5L12 2.5l4 19M9.6 14h4.8M10.6 9h2.8M4 21.5h16"/><path d="M9 18.5l5-4.5M15 18.5l-5-4.5"/>',
+ "plant": '<path d="M3.5 21.5c1-4 1-8 0-12h6c-1 4-1 8 0 12M13.5 21.5c1-4 1-8 0-12h6c-1 4-1 8 0 12M2 21.5h20"/><path d="M6 6.5c0-1.5 1.5-1.5 1.5-3M16 6.5c0-1.5 1.5-1.5 1.5-3"/>',
  "factory": '<path d="M2 21V11l6 4V11l6 4V7l8 4v10z"/><path d="M6 21v-3M11 21v-3M16 21v-3"/>',
- "silo": '<path d="M5 21V8a7 4 0 0 1 14 0v13"/><path d="M5 12h14M5 16h14"/>',
- "crane": '<path d="M4 21h8M7 21V5l13 3M7 9l4-4M7 5h-3M18 7.6V12"/><path d="M16.5 12h3v2h-3z"/>',
+ "road": '<path d="M8.5 3L4 21M15.5 3L20 21M12 4.5v3M12 10.5v3M12 16.5v3"/>',
+ "silo": '<path d="M3.5 21V8a3 3 0 0 1 6 0v13M9.5 21V8a3 3 0 0 1 6 0v13M15.5 21v-9h5v9M2 21h20"/>',
+ "legal": '<path d="M3 21h18M5 21V9h14v12M9 21v-4h6v4M8 12h2M14 12h2M12 3l9 6H3z"/>',
+ "person": '<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.5 4.2-6.5 8-6.5s7 2 8 6.5"/>',
+ "cash": '<rect x="2.5" y="6" width="19" height="12" rx="1.5"/><circle cx="12" cy="12" r="3"/><path d="M6 9.5v5M18 9.5v5"/>',
+ "card": '<rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 9.5h19M6 15h4"/>',
+ "spark": '<path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M18.5 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/>',
 })
 def ui(n, cls="ui"): return f'<svg class="{cls}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{ICON[n]}</g></svg>'
 
-def logo():
-    return f'<a class="logo" href="/" aria-label="{BRAND} — на главную"><span class="logo-m">{ui("hook")}</span><span class="logo-t">{BRAND}<small>аренда автокранов</small></span></a>'
+def logo(dark=False):
+    src = "/assets/art/logo-crane-w.svg" if dark else "/assets/art/logo-crane.svg"
+    return (f'<a class="logo" href="/" aria-label="{BRAND} — на главную"><span class="logo-m"><img src="{src}" alt="" width="54" height="38"></span>'
+            f'<span class="logo-t">АРЕНДА<b>КРАНА</b><small>.kz · автокраны 50–400 т</small></span></a>')
 
 def photo(src, alt, label, cls="ph"):
     """Слот под фото: если файла нет — аккуратная заглушка с подписью, без поломанной картинки."""
     return (f'<div class="{cls}"><span class="ph-l">{label}</span>'
             f'<img src="{src}?v={VER}" alt="{E(alt)}" loading="lazy" onerror="this.remove()"></div>')
+
+def clients_html():
+    return '<div class="cli">' + "".join(f'<div><span class="cli-i">{ui(i)}</span><b>{E(t)}</b><p>{E(d)}</p></div>' for i, t, d in CLIENTS) + "</div>"
 
 def btns(msg, light=False):
     return (f'<div class="btns"><a class="btn btn-y" href="tel:{PHONE_TEL}" data-call>{ui("phone")}Позвонить</a>'
@@ -197,8 +217,8 @@ def page(path, title, desc, body, schemas=(), crumbs=None, prio="0.7", kw=""):
 <meta property="og:type" content="website"><meta property="og:locale" content="ru_KZ"><meta property="og:site_name" content="{BRAND}">
 <meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{SITE_URL}{path}">
 <meta property="og:image" content="{SITE_URL}/assets/og.png"><meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0a1330">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.png" type="image/png"><link rel="apple-touch-icon" href="/assets/icon-192.png"><link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0b0d0c">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.png" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/onest-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/unbounded-cyrillic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/styles.css?v={VER}">
@@ -208,13 +228,14 @@ def page(path, title, desc, body, schemas=(), crumbs=None, prio="0.7", kw=""):
 <a class="skip" href="#main">К содержимому</a>
 <header class="hdr"><div class="wrap hdr-in">{logo()}{nav_html()}
 <div class="hdr-c"><a class="hdr-ph" href="tel:{PHONE_TEL}" data-call>{PHONE_DISPLAY}<small>по всему Казахстану</small></a>
+<a class="hdr-call" href="tel:{PHONE_TEL}" data-call aria-label="Позвонить {PHONE_DISPLAY}">{ui("phone")}</a>
 <a class="btn btn-y btn-s hdr-wa" {wa_attr("Здравствуйте! Нужен автокран.")}>{ui("wa")}WhatsApp</a>
 <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">{ui("menu")}{ui("close", "ui ui-x")}</button></div></div></header>
 <main id="main">
 {body}
 </main>
 <footer class="ftr"><div class="wrap ftr-g">
-<div>{logo()}<p>Аренда автокранов 50, 70, 80, 100 и 400 тонн по всему Казахстану. Техника {", ".join(BRANDS)}.</p>
+<div>{logo(True)}<p>Аренда автокранов 50, 70, 80, 100 и 400 тонн по всему Казахстану. Работаем с юридическими и физическими лицами, наличный и безналичный расчёт. Техника {", ".join(BRANDS)}.</p>
 <a class="ftr-ph" href="tel:{PHONE_TEL}" data-call>{PHONE_DISPLAY}</a></div>
 <div><h4>Автокраны</h4><ul>{"".join(f'<li><a href="{fleet_url(f)}">{f["t"]} тонн</a></li>' for f in FLEET)}</ul></div>
 <div><h4>Услуги</h4><ul>{"".join(f'<li><a href="/uslugi/{s["slug"]}/">{E(s["name"])}</a></li>' for s in SERVICES[:6])}</ul></div>
@@ -222,8 +243,7 @@ def page(path, title, desc, body, schemas=(), crumbs=None, prio="0.7", kw=""):
 </div><div class="wrap ftr-b"><span>© {date.today().year} {BRAND}. Информация на сайте не является публичной офертой.</span>
 <a href="{DEV[1]}" target="_blank" rel="noopener">Разработка сайта — {DEV[0]}</a></div></footer>
 <div class="fab"><button class="fab-b" type="button" data-back aria-label="Назад" title="Назад">{ui("back")}</button><button class="fab-b" type="button" data-top aria-label="Наверх" title="Наверх">{ui("up")}</button></div>
-<div class="mbar"><a href="tel:{PHONE_TEL}" data-call>{ui("phone")}Позвонить</a><a {wa_attr("Здравствуйте! Нужен автокран.")}>{ui("wa")}WhatsApp</a></div>
-<button class="chat-o" type="button" data-chat aria-label="Онлайн-консультант">{ui("chat")}<span>Онлайн-консультант</span></button>
+<button class="chat-o" type="button" data-chat aria-label="ИИ-консультант"><span class="chat-o-i">{ui("spark")}</span><span class="chat-o-t">ИИ-консультант<small>ответит за минуту</small></span></button>
 <div class="chat" id="chat" hidden role="dialog" aria-label="Онлайн-консультант"><div class="chat-h"><b>{BRAND}<small>онлайн-консультант</small></b><button type="button" data-chat-x aria-label="Закрыть чат">{ui("close")}</button></div>
 <div class="chat-l" aria-live="polite"></div><div class="chat-q"></div>
 <form class="chat-f"><input name="q" autocomplete="off" placeholder="Напишите вопрос" aria-label="Ваш вопрос"><button type="submit" aria-label="Отправить">{ui("send")}</button></form>
@@ -243,12 +263,13 @@ def build_home():
 <h1>Аренда автокранов <em>50–400 тонн</em> по всему Казахстану</h1>
 <p class="lead-t">Монтаж металлоконструкций и ЖБИ, погрузка и разгрузка, установка промышленного оборудования и сверхтяжёлые подъёмы. Подбираем кран по массе груза, вылету и высоте — с запасом по грузовысотной таблице.</p>
 {btns("Здравствуйте! Нужен автокран.", light=True)}</div>
-<div class="hero-v">{photo("/images/hero.jpg", f"Автокраны {BRAND}", "", "ph ph-hero")}<ul class="tons">{tons}</ul></div></div>
+<div class="hero-v"><div class="hero-art"><img src="/assets/art/crane-lines.webp?v={VER}" alt="" width="1600" height="892" fetchpriority="high"><img class="hero-ph" src="/images/hero.jpg?v={VER}" alt="Автокран на объекте" onerror="this.remove()"></div><ul class="tons">{tons}</ul></div></div>
 <div class="wrap">{brands_strip()}</div></section>
 {sec("Автокраны в парке", fleet_cards(), "Пять классов грузоподъёмности — от монтажа на стройке до сверхтяжёлых промышленных подъёмов.", sid="park", link=("Все автокраны", "/avtokrany/"))}
 {sec("Услуги автокрана", cat_blocks(), "Под каждую задачу — подходящий класс крана. Выберите работу, чтобы узнать подробности.", alt=True, link=("Все услуги", "/uslugi/"))}
 {sec("Как мы работаем", steps_html())}
-{sec("От чего зависит стоимость", factors_html(), "Цену называем после уточнения задачи — так вы платите за подходящий кран, а не за лишний тоннаж.", alt=True)}
+{sec("Работаем с компаниями и частными клиентами", clients_html(), "Юридические и физические лица, оплата наличными или безналичным расчётом.", alt=True)}
+{sec("От чего зависит стоимость", factors_html(), "Цену называем после уточнения задачи — так вы платите за подходящий кран, а не за лишний тоннаж.")}
 {geo_sec()}
 {sec("Полезно знать", article_cards(), link=("Все статьи", "/stati/"))}
 {sec("Частые вопросы", faq_html(FAQ), alt=True)}
@@ -318,6 +339,7 @@ def build_cities():
 {sec(f"Автокраны {cin}", fleet_cards(cin), "Выберите класс по массе груза и высоте подъёма.")}
 {sec("Услуги", cat_blocks(), alt=True)}
 {sec("Как мы работаем", steps_html())}
+{sec("Юр. и физ. лица, нал и безнал", clients_html(), alt=True)}
 {geo_sec(slug)}
 {sec("Частые вопросы", faq_html(cfaq))}
 {lead_form(f"Заказать автокран {cin}", slug)}'''
@@ -350,10 +372,10 @@ def build_misc():
     body = f'''{ph_hero(f"О компании {BRAND}", f"Аренда автокранов 50–400 тонн по всему Казахстану. Техника {', '.join(BRANDS)}.", [("О компании", "/o-kompanii/")], "Здравствуйте! Нужен автокран.")}
 <section class="sec"><div class="wrap two"><div class="prose"><h2>Чем занимаемся</h2><p>Сдаём в аренду автокраны пяти классов грузоподъёмности — 50, 70, 80, 100 и 400 тонн — для строительства, промышленного монтажа, погрузки и сверхтяжёлых подъёмов.</p><p>Работаем по всему Казахстану: от городских строек до промышленных и энергетических объектов в регионах. Кран подбираем под задачу — по массе груза, вылету и высоте подъёма.</p></div>
 <div><h2>Парк техники</h2><ul class="tons tons-l">{park}</ul></div></div></section>
-{sec("Как мы работаем", steps_html(), alt=True)}{lead_form()}'''
+{sec("Как мы работаем", steps_html(), alt=True)}{sec("Клиенты и оплата", clients_html())}{lead_form()}'''
     page("/o-kompanii/", f"О компании {BRAND} — аренда автокранов", f"{BRAND}: аренда автокранов 50, 70, 80, 100 и 400 тонн, техника {', '.join(BRANDS)}, работа по всему Казахстану.", body, crumbs=[("О компании", "/o-kompanii/")], prio="0.5", kw="о компании")
     body = f'''{ph_hero("Контакты", "Позвоните или напишите в WhatsApp — подберём кран и назовём стоимость.", [("Контакты", "/kontakty/")], "Здравствуйте! Нужен автокран.")}
-<section class="sec"><div class="wrap cont"><div><span>Телефон и WhatsApp</span><a href="tel:{PHONE_TEL}" data-call>{PHONE_DISPLAY}</a></div><div><span>География</span><b>Вся Республика Казахстан</b></div><div><span>Написать</span><a {wa_attr("Здравствуйте! Нужен автокран.")}>WhatsApp</a></div></div></section>
+<section class="sec"><div class="wrap cont"><div><span>Телефон и WhatsApp</span><a href="tel:{PHONE_TEL}" data-call>{PHONE_DISPLAY}</a></div><div><span>Клиенты и оплата</span><b>Юр. и физ. лица, нал и безнал</b></div><div><span>Написать</span><a {wa_attr("Здравствуйте! Нужен автокран.")}>WhatsApp</a></div></div></section>
 {geo_sec()}{lead_form()}'''
     page("/kontakty/", f"Контакты {BRAND} — аренда автокранов", f"Телефон и WhatsApp {PHONE_DISPLAY}. Аренда автокранов 50–400 тонн по всему Казахстану.", body, crumbs=[("Контакты", "/kontakty/")], prio="0.6", kw="контакты телефон")
     body = f'''<section class="phd phd-s"><div class="wrap">{crumbs_html([("Политика конфиденциальности", "/privacy-policy/")])}<h1>Политика конфиденциальности</h1></div></section>
@@ -382,7 +404,7 @@ def build_files():
             "", "## Частые вопросы"] + [f"- {q} {a}" for q, a in FAQ] + ["", "## Статьи"] + [f"- {a['title']}: {SITE_URL}/stati/{a['slug']}/" for a in ARTICLES]
     (DIST / "llms.txt").write_text("\n".join(llms) + "\n", encoding="utf-8")
     (DIST / "site.webmanifest").write_text(json.dumps({"name": f"{BRAND} — аренда автокранов", "short_name": BRAND, "start_url": "/", "display": "standalone",
-        "background_color": "#0a1330", "theme_color": "#0a1330", "icons": [{"src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png"}]}, ensure_ascii=False), encoding="utf-8")
+        "background_color": "#0b0d0c", "theme_color": "#0b0d0c", "icons": [{"src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png"}]}, ensure_ascii=False), encoding="utf-8")
     # ассеты и база знаний для чата
     shutil.copytree(ROOT / "assets", DIST / "assets", dirs_exist_ok=True)
     css = (ROOT / "src" / "fonts.css").read_text(encoding="utf-8") + (ROOT / "src" / "styles.css").read_text(encoding="utf-8")

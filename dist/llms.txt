@@ -21,6 +21,24 @@
 - Монтаж ветрогенераторов (100, 400 т): https://www.kranpark.kz/uslugi/vetroenergetika/
 - Демонтаж конструкций (50, 70, 80, 100 т): https://www.kranpark.kz/uslugi/demontazh/
 - Подъём грузов на высоту (50, 70, 80, 100 т): https://www.kranpark.kz/uslugi/podem-na-vysotu/
+- Монтаж ангаров и складов (50, 70, 80 т): https://www.kranpark.kz/uslugi/montazh-angarov-i-skladov/
+- Монтаж модульных зданий (50, 70 т): https://www.kranpark.kz/uslugi/montazh-modulnyh-zdaniy/
+- Монтаж резервуаров и ёмкостей (70, 80, 100, 400 т): https://www.kranpark.kz/uslugi/montazh-rezervuarov/
+- Монтаж трансформаторов (50, 70, 80, 100 т): https://www.kranpark.kz/uslugi/montazh-transformatorov/
+- Монтаж опор ЛЭП и освещения (50, 70, 80 т): https://www.kranpark.kz/uslugi/montazh-opor-lep/
+- Монтаж мостовых конструкций (80, 100, 400 т): https://www.kranpark.kz/uslugi/montazh-mostovyh-konstrukciy/
+- Подъём вентиляции и кондиционеров (50, 70 т): https://www.kranpark.kz/uslugi/montazh-ventilyacii-i-kondicionerov/
+- Монтаж рекламных конструкций (50 т): https://www.kranpark.kz/uslugi/montazh-reklamnyh-konstrukciy/
+- Монтаж башен и мачт связи (50, 70, 80, 100 т): https://www.kranpark.kz/uslugi/montazh-bashen-svyazi/
+- Разгрузка тралов и длинномеров (50, 70, 80, 100 т): https://www.kranpark.kz/uslugi/razgruzka-tralov-i-dlinnomerov/
+- Погрузка контейнеров (50, 70 т): https://www.kranpark.kz/uslugi/pogruzka-konteynerov/
+- Перестановка оборудования (50, 70, 80, 100 т): https://www.kranpark.kz/uslugi/peremeshchenie-oborudovaniya/
+- Подъём негабаритных грузов (80, 100, 400 т): https://www.kranpark.kz/uslugi/negabaritnye-gruzy/
+- Нефтегазовые объекты (70, 80, 100, 400 т): https://www.kranpark.kz/uslugi/neftegazovye-obekty/
+- Энергетика (50, 70, 80, 100, 400 т): https://www.kranpark.kz/uslugi/energetika/
+- Промышленные предприятия (50, 70, 80, 100, 400 т): https://www.kranpark.kz/uslugi/promyshlennye-predpriyatiya/
+- Дороги и инфраструктура (50, 70, 80, 100, 400 т): https://www.kranpark.kz/uslugi/infrastruktura/
+- Элеваторы и агрообъекты (50, 70, 80, 100 т): https://www.kranpark.kz/uslugi/selskoe-hozyaystvo/
 
 ## Стоимость
 - Цена зависит от грузоподъёмности, массы груза, вылета и высоты, времени работы, удалённости объекта и условий площадки; называется после уточнения задачи.

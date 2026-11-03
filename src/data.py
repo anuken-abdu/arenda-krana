@@ -217,3 +217,19 @@ CITY_NOTE = {
     "kyzylorda": "регион нефтедобычи и строительства",
     "turkestan": "город с масштабным строительством нового административного и туристического центра",
 }
+
+# Фото работ клиента: номер файла images/raboty/NN.webp, подпись (только то, что видно на фото)
+WORKS = [(1, "Монтаж металлоконструкций в цехе"), (2, "Монтаж козлового крана"), (3, "Монтаж металлического каркаса здания"),
+         (4, "Автокраны на площадке"), (5, "Монтаж мачты связи"), (6, "Монтаж оборудования у здания"), (7, "Подъём на высотном здании"),
+         (8, "Работа на строительном объекте"), (9, "Монтаж ветроэнергетической установки"), (10, "Работы на ветропарке"),
+         (11, "Установка оборудования"), (12, "Подъём оборудования на высоту"), (13, "Монтаж ветрогенератора"), (14, "Автокран на объекте"),
+         (15, "Работа у жилого дома"), (16, "Монтаж козлового крана"), (17, "Работы у железнодорожных путей"), (18, "Работа в центре города"),
+         (19, "Автокраны на площадке"), (20, "Ночной монтаж ветрогенератора"), (21, "Монтаж козлового крана"), (22, "Ночная работа на объекте")]
+HOME_WORKS = [3, 9, 5, 18, 12, 20, 1, 17]
+# Фото к страницам услуг (по содержанию снимка)
+SERVICE_PHOTO = {"montazh-metallokonstrukciy": 3, "montazh-oborudovaniya": 11, "stroitelstvo": 8, "vetroenergetika": 20, "podem-na-vysotu": 12,
+                 "montazh-angarov-i-skladov": 1, "montazh-bashen-svyazi": 5, "montazh-opor-lep": 5, "montazh-ventilyacii-i-kondicionerov": 6,
+                 "pogruzka-razgruzka": 17, "razgruzka-tralov-i-dlinnomerov": 17, "peremeshchenie-oborudovaniya": 2, "energetika": 13,
+                 "promyshlennye-predpriyatiya": 16, "negabaritnye-gruzy": 21, "infrastruktura": 18, "neftegazovye-obekty": 10, "montazh-zhbi": 15,
+                 "demontazh": 22, "montazh-modulnyh-zdaniy": 14, "montazh-rezervuarov": 6, "montazh-transformatorov": 11,
+                 "montazh-mostovyh-konstrukciy": 4, "montazh-reklamnyh-konstrukciy": 7, "pogruzka-konteynerov": 19, "selskoe-hozyaystvo": 12}

@@ -50,6 +50,33 @@
     });
   });
 
+  /* ---------- просмотр фото ---------- */
+  var lb = $("#lb"), lbItems = [], lbI = 0;
+  function lbShow(i) {
+    lbI = (i + lbItems.length) % lbItems.length; var a = lbItems[lbI];
+    $("img", lb).src = a.getAttribute("href"); $("img", lb).alt = a.getAttribute("data-cap") || "";
+    $("figcaption", lb).textContent = a.getAttribute("data-cap") || "";
+    var many = lbItems.length > 1; $(".lb-p", lb).hidden = !many; $(".lb-n", lb).hidden = !many;
+  }
+  function lbClose() { lb.hidden = true; document.body.classList.remove("lock"); }
+  if (lb) {
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest("a[data-lb]"); if (!a) return;
+      e.preventDefault(); lbItems = $$('a[data-lb="' + a.getAttribute("data-lb") + '"]'); lb.hidden = false; document.body.classList.add("lock"); lbShow(lbItems.indexOf(a));
+    });
+    $(".lb-x", lb).addEventListener("click", lbClose);
+    $(".lb-p", lb).addEventListener("click", function () { lbShow(lbI - 1); });
+    $(".lb-n", lb).addEventListener("click", function () { lbShow(lbI + 1); });
+    lb.addEventListener("click", function (e) { if (e.target === lb) lbClose(); });
+    var tx = null;
+    lb.addEventListener("touchstart", function (e) { tx = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener("touchend", function (e) { if (tx === null) return; var d = e.changedTouches[0].clientX - tx; if (Math.abs(d) > 50) lbShow(lbI + (d < 0 ? 1 : -1)); tx = null; });
+    document.addEventListener("keydown", function (e) {
+      if (lb.hidden) return;
+      if (e.key === "ArrowRight") lbShow(lbI + 1); else if (e.key === "ArrowLeft") lbShow(lbI - 1); else if (e.key === "Escape") lbClose();
+    });
+  }
+
   /* ---------- заявка → WhatsApp ---------- */
   $$("form[data-lead]").forEach(function (f) {
     f.addEventListener("submit", function (e) {

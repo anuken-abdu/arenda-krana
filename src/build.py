@@ -8,7 +8,7 @@ from data import *
 
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist"
-VER = "0311261800"
+VER = "0311262000"
 TODAY = date.today().isoformat()
 E = lambda s: html.escape(str(s), quote=True)
 PAGES = []
@@ -97,8 +97,7 @@ def fleet_cards(cin=""):
     for f in FLEET:
         tasks = "".join(f"<li>{ui('check')}{E(t)}</li>" for t in f["tasks"][:3])
         out.append(f'''<article class="fc">{photo(f"/images/tehnika/{f['slug']}.jpg", f"Автокран {f['t']} тонн", f"{f['t']} т")}
-<div class="fc-b"><div class="fc-t"><b>{f['t']}<span>тонн</span></b><em>в парке: {units(f['n'])}</em></div>
-<h3><a href="{fleet_url(f)}">Автокран {f['t']} тонн{(' ' + cin) if cin else ''}</a></h3><ul class="ticks">{tasks}</ul>
+<div class="fc-b"><div class="fc-t"><h3><a href="{fleet_url(f)}">Автокран {f['t']} тонн{(' ' + cin) if cin else ''}</a></h3><em>в парке: {units(f['n'])}</em></div><ul class="ticks">{tasks}</ul>
 <a class="lnk" href="{fleet_url(f)}">Подробнее {ui("arrow")}</a></div></article>''')
     return '<div class="fleet">' + "".join(out) + "</div>"
 
@@ -116,6 +115,29 @@ def cat_blocks():
         li = "".join(f'<li><a href="/uslugi/{s["slug"]}/">{ui(s["ic"])}{E(s["name"])}</a></li>' for s in items)
         out.append(f'<div class="cat"><div class="cat-h"><b>{name}</b><span>{desc}</span></div><ul>{li}</ul></div>')
     return '<div class="cats">' + "".join(out) + "</div>"
+
+def works_grid(nums=None):
+    items = [w for w in WORKS if nums is None or w[0] in nums]
+    if nums: items.sort(key=lambda w: nums.index(w[0]))
+    return '<div class="works">' + "".join(
+        f'<a class="wk" href="/images/raboty/{n:02d}.webp?v={VER}" data-lb="w" data-cap="{E(c)}"><img src="/images/raboty/{n:02d}-s.webp?v={VER}" alt="{E(c)} — {BRAND}" loading="lazy" width="720" height="540"><span>{E(c)}</span></a>'
+        for n, c in items) + "</div>"
+
+def works_sec(alt=False):
+    return sec("Наши работы", works_grid(HOME_WORKS), "Фотографии с объектов: монтаж конструкций, оборудования, мачт и ветрогенераторов.", alt=alt, link=("Все фото", "/raboty/"))
+
+def promo_pair():
+    """Два рекламных баннера на сайте: кран 400 т и клиенты/оплата."""
+    return f'''<section class="promo"><div class="wrap promo-g">
+<a class="pb pb-d" href="/avtokrany/avtokran-400-tonn/"><span class="pb-t"><small>Сверхтяжёлый класс</small><b>Автокран <em>400 тонн</em></b><span>Нефтегаз, энергетика, мосты и ветроэнергетика</span><i class="pb-btn">Подробнее {ui("arrow")}</i></span>
+<img src="/assets/art/crane-lines.webp?v={VER}" alt="" loading="lazy" width="1600" height="892"></a>
+<a class="pb pb-g" href="#zayavka"><span class="pb-t"><small>Для любых клиентов</small><b>Юр. и физ. лица</b><span>Наличный и безналичный расчёт</span><i class="pb-btn">Оставить заявку {ui("arrow")}</i></span>
+<img src="/assets/art/crane-sil-2.webp?v={VER}" alt="" loading="lazy" width="1200" height="1200"></a></div></section>'''
+
+def promo_wide(msg="Здравствуйте! Помогите подобрать автокран."):
+    return f'''<section class="promo"><div class="wrap"><div class="pb pb-w"><span class="pb-t"><small>Не знаете, какой кран нужен?</small><b>Подберём по массе, <em>вылету и высоте</em></b><span>Напишите задачу — назовём класс крана и стоимость</span>
+<span class="pb-bt"><a class="btn btn-y" href="tel:{PHONE_TEL}" data-call>{ui("phone")}Позвонить</a><a class="btn btn-l" {wa_attr(msg)}>{ui("wa")}WhatsApp</a></span></span>
+<img src="/assets/art/crane-lines.webp?v={VER}" alt="" loading="lazy" width="1600" height="892"></div></div></section>'''
 
 def brands_strip():
     return '<ul class="brands">' + "".join(f"<li>{b}</li>" for b in BRANDS) + "</ul>"
@@ -186,7 +208,7 @@ def nav_html():
     sv = "".join(f'<li><a href="/uslugi/#{k}">{n}</a></li>' for k, n, _ in SERVICE_CATS)
     return f'''<nav class="nav" id="nav" aria-label="Меню"><ul>
 <li class="has"><a href="/avtokrany/">Автокраны</a><ul class="sub">{fl}</ul></li>
-<li class="has"><a href="/uslugi/">Услуги</a><ul class="sub">{sv}</ul></li><li><a href="/goroda/">Города</a></li><li><a href="/stati/">Статьи</a></li>
+<li class="has"><a href="/uslugi/">Услуги</a><ul class="sub">{sv}</ul></li><li><a href="/raboty/">Наши работы</a></li><li><a href="/goroda/">Города</a></li><li><a href="/stati/">Статьи</a></li>
 <li><a href="/o-kompanii/">О компании</a></li><li><a href="/kontakty/">Контакты</a></li></ul>
 <div class="nav-m">{btns("Здравствуйте! Нужен автокран.")}</div></nav>'''
 
@@ -239,7 +261,7 @@ def page(path, title, desc, body, schemas=(), crumbs=None, prio="0.7", kw=""):
 <a class="ftr-ph" href="tel:{PHONE_TEL}" data-call>{PHONE_DISPLAY}</a></div>
 <div><h4>Автокраны</h4><ul>{"".join(f'<li><a href="{fleet_url(f)}">{f["t"]} тонн</a></li>' for f in FLEET)}</ul></div>
 <div><h4>Услуги</h4><ul>{"".join(f'<li><a href="/uslugi/{s["slug"]}/">{E(s["name"])}</a></li>' for s in SERVICES[:6])}</ul></div>
-<div><h4>Компания</h4><ul><li><a href="/o-kompanii/">О компании</a></li><li><a href="/goroda/">Города</a></li><li><a href="/stati/">Статьи</a></li><li><a href="/kontakty/">Контакты</a></li><li><a href="/privacy-policy/">Политика конфиденциальности</a></li></ul></div>
+<div><h4>Компания</h4><ul><li><a href="/o-kompanii/">О компании</a></li><li><a href="/raboty/">Наши работы</a></li><li><a href="/goroda/">Города</a></li><li><a href="/stati/">Статьи</a></li><li><a href="/kontakty/">Контакты</a></li><li><a href="/privacy-policy/">Политика конфиденциальности</a></li></ul></div>
 </div><div class="wrap ftr-b"><span>© {date.today().year} {BRAND}. Информация на сайте не является публичной офертой.</span>
 <a href="{DEV[1]}" target="_blank" rel="noopener">Разработка сайта — {DEV[0]}</a></div></footer>
 <div class="fab"><button class="fab-b" type="button" data-back aria-label="Назад" title="Назад">{ui("back")}</button><button class="fab-b" type="button" data-top aria-label="Наверх" title="Наверх">{ui("up")}</button></div>
@@ -248,6 +270,7 @@ def page(path, title, desc, body, schemas=(), crumbs=None, prio="0.7", kw=""):
 <div class="chat-l" aria-live="polite"></div><div class="chat-q"></div>
 <form class="chat-f"><input name="q" autocomplete="off" placeholder="Напишите вопрос" aria-label="Ваш вопрос"><button type="submit" aria-label="Отправить">{ui("send")}</button></form>
 <a class="chat-wa" {wa_attr("Здравствуйте! Пишу с сайта, нужен автокран.")}>{ui("wa")}Продолжить в WhatsApp</a></div>
+<div class="lb" id="lb" hidden role="dialog" aria-label="Просмотр фото"><button class="lb-x" type="button" aria-label="Закрыть">{ui("close")}</button><button class="lb-p" type="button" aria-label="Предыдущее фото">{ui("back")}</button><figure><img alt=""><figcaption></figcaption></figure><button class="lb-n" type="button" aria-label="Следующее фото">{ui("arrow")}</button></div>
 <script>window.CFG={cfg};</script>
 <script src="/assets/app.js?v={VER}" defer></script>
 </body></html>'''
@@ -266,6 +289,8 @@ def build_home():
 <div class="hero-v"><div class="hero-art"><img src="/assets/art/crane-lines.webp?v={VER}" alt="" width="1600" height="892" fetchpriority="high"><img class="hero-ph" src="/images/hero.jpg?v={VER}" alt="Автокран на объекте" onerror="this.remove()"></div><ul class="tons">{tons}</ul></div></div>
 <div class="wrap">{brands_strip()}</div></section>
 {sec("Автокраны в парке", fleet_cards(), "Пять классов грузоподъёмности — от монтажа на стройке до сверхтяжёлых промышленных подъёмов.", sid="park", link=("Все автокраны", "/avtokrany/"))}
+{promo_pair()}
+{works_sec()}
 {sec("Услуги автокрана", cat_blocks(), "Под каждую задачу — подходящий класс крана. Выберите работу, чтобы узнать подробности.", alt=True, link=("Все услуги", "/uslugi/"))}
 {sec("Как мы работаем", steps_html())}
 {sec("Работаем с компаниями и частными клиентами", clients_html(), "Юридические и физические лица, оплата наличными или безналичным расчётом.", alt=True)}
@@ -300,6 +325,7 @@ def build_fleet():
 <div class="specs"><div><span>Грузоподъёмность</span><b>{t} тонн</b></div><div><span>В парке</span><b>{units(f['n'])}</b></div><div><span>Производители техники</span><b>{", ".join(BRANDS)}</b></div><div><span>География</span><b>Вся Республика Казахстан</b></div>
 <p class="specs-n">Длину стрелы, вылет и грузовысотную таблицу конкретного крана уточняйте у менеджера под вашу задачу.</p></div></div></section>
 {sec("Услуги с этим краном", svc_cards(fit), alt=True) if fit else ""}
+{promo_wide(f"Здравствуйте! Нужен автокран {t} тонн.")}
 {sec("Другие классы", f'<ul class="chips">{sib}</ul>')}
 {geo_sec()}
 {sec("Вопросы", faq_html(faq), alt=True)}
@@ -318,8 +344,11 @@ def build_services():
         fl = [f for f in FLEET if f["t"] in s["fit"]]
         pts = "".join(f"<li>{ui('check')}{E(p)}</li>" for p in s["points"])
         tons = "".join(f'<li><a href="{fleet_url(f)}"><b>{f["t"]} т</b><span>{units(f["n"])}</span></a></li>' for f in fl)
-        body = f'''{ph_hero(E(s["name"]) + " автокраном", E(s["text"]), [("Услуги", "/uslugi/"), (s["name"], url)], f"Здравствуйте! Нужен автокран: {s['name'].lower()}.")}
+        pn = SERVICE_PHOTO.get(s["slug"])
+        side = f'<a class="ph ph-side ph-real" href="/images/raboty/{pn:02d}.webp?v={VER}" data-lb="s" data-cap="{E(dict(WORKS)[pn])}"><img src="/images/raboty/{pn:02d}.webp?v={VER}" alt="{E(s["name"])} — фото с объекта" width="1280" height="960"></a>' if pn else ""
+        body = f'''{ph_hero(E(s["name"]) + " автокраном", E(s["text"]), [("Услуги", "/uslugi/"), (s["name"], url)], f"Здравствуйте! Нужен автокран: {s['name'].lower()}.", side)}
 <section class="sec"><div class="wrap two"><div><h2>Как работаем</h2><ul class="ticks ticks-l">{pts}</ul></div><div><h2>Подходящие краны</h2><ul class="tons tons-l">{tons}</ul></div></div></section>
+{promo_wide()}
 {sec("Похожие услуги", svc_cards(([x for x in SERVICES if x["cat"] == s["cat"] and x is not s] + [x for x in SERVICES if x["cat"] != s["cat"]])[:4]), alt=True, link=("Все услуги", "/uslugi/"))}
 {sec("Частые вопросы", faq_html(FAQ[2:6]))}
 {lead_form()}'''
@@ -337,6 +366,8 @@ def build_cities():
         cfaq = faq + [x for x in FAQ if x[0] not in {q for q, _ in faq} and "по всему Казахстану" not in x[0]]
         body = f'''{ph_hero(f"Аренда автокрана {cin}", E(intro), [("Города", "/goroda/"), (name, url)], f"Здравствуйте! Нужен автокран, город {name}.")}
 {sec(f"Автокраны {cin}", fleet_cards(cin), "Выберите класс по массе груза и высоте подъёма.")}
+{promo_pair()}
+{works_sec()}
 {sec("Услуги", cat_blocks(), alt=True)}
 {sec("Как мы работаем", steps_html())}
 {sec("Юр. и физ. лица, нал и безнал", clients_html(), alt=True)}
@@ -366,6 +397,14 @@ def build_articles():
     body = f'''{ph_hero("Статьи", "Как выбрать автокран, подготовить площадку и спланировать сверхтяжёлый подъём.", [("Статьи", "/stati/")], "Здравствуйте! Есть вопрос по автокрану.")}
 {sec("Все статьи", article_cards())}'''
     page("/stati/", f"Статьи об аренде автокранов — {BRAND}", "Как выбрать автокран по грузоподъёмности, подготовить площадку и заказать кран 400 тонн.", body, crumbs=[("Статьи", "/stati/")], prio="0.6", kw="статьи")
+
+def build_works():
+    body = f'''{ph_hero("Наши работы", "Фотографии с объектов по Казахстану: монтаж металлоконструкций, оборудования, мачт связи, козловых кранов и ветрогенераторов.", [("Наши работы", "/raboty/")], "Здравствуйте! Посмотрел ваши работы, нужен автокран.")}
+{sec("Фото с объектов", works_grid())}{promo_wide()}{lead_form()}'''
+    sch = {"@context": "https://schema.org", "@type": "ImageGallery", "name": f"Наши работы — {BRAND}", "url": SITE_URL + "/raboty/",
+           "image": [{"@type": "ImageObject", "contentUrl": f"{SITE_URL}/images/raboty/{n:02d}.webp", "name": c} for n, c in WORKS]}
+    page("/raboty/", f"Наши работы — фото автокранов на объектах | {BRAND}", "Фотографии работ автокранов: монтаж металлоконструкций, оборудования, мачт связи, козловых кранов и ветрогенераторов по Казахстану.",
+         body, [sch], crumbs=[("Наши работы", "/raboty/")], prio="0.7", kw="наши работы фото портфолио")
 
 def build_misc():
     park = "".join(f'<li><a href="{fleet_url(f)}"><b>{f["t"]} т</b><span>{units(f["n"])}</span></a></li>' for f in FLEET)
@@ -399,7 +438,7 @@ def build_files():
             f"- Телефон и WhatsApp: {PHONE_DISPLAY}", f"- Сайт: {SITE_URL}/", "",
             "## Парк техники"] + [f"- Автокран {f['t']} тонн — {units(f['n'])}: {SITE_URL}{fleet_url(f)}" for f in FLEET] + [
             "", "## Услуги"] + [f"- {s['name']} ({', '.join(str(t) for t in s['fit'])} т): {SITE_URL}/uslugi/{s['slug']}/" for s in SERVICES] + [
-            "", "## Стоимость", "- Цена зависит от грузоподъёмности, массы груза, вылета и высоты, времени работы, удалённости объекта и условий площадки; называется после уточнения задачи.",
+            "", "## Фото работ", f"- {len(WORKS)} фотографий с объектов: {SITE_URL}/raboty/", "", "## Стоимость", "- Цена зависит от грузоподъёмности, массы груза, вылета и высоты, времени работы, удалённости объекта и условий площадки; называется после уточнения задачи.",
             "", "## Города"] + [f"- {c[1]}: {SITE_URL}{city_url(c[0])}" for c in CITIES] + [
             "", "## Частые вопросы"] + [f"- {q} {a}" for q, a in FAQ] + ["", "## Статьи"] + [f"- {a['title']}: {SITE_URL}/stati/{a['slug']}/" for a in ARTICLES]
     (DIST / "llms.txt").write_text("\n".join(llms) + "\n", encoding="utf-8")
@@ -419,5 +458,5 @@ def build_files():
 if __name__ == "__main__":
     if DIST.exists(): shutil.rmtree(DIST)
     DIST.mkdir()
-    build_home(); build_fleet(); build_services(); build_cities(); build_articles(); build_misc(); build_files()
+    build_home(); build_fleet(); build_services(); build_cities(); build_articles(); build_works(); build_misc(); build_files()
     print("pages:", len(PAGES))

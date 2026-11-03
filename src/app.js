@@ -34,7 +34,13 @@
 
   /* ---------- назад / наверх ---------- */
   var fab = $(".fab");
-  function onScroll() { if (fab) fab.classList.toggle("on", window.pageYOffset > 500); }
+  var ftr = $(".ftr");
+  function onScroll() {
+    if (fab) fab.classList.toggle("on", window.pageYOffset > 500);
+    // у самого низа страницы плавающие кнопки становятся полупрозрачными, чтобы не закрывать подвал
+    var end = ftr ? ftr.getBoundingClientRect().top < window.innerHeight - 40 : false;
+    document.body.classList.toggle("at-end", end);
+  }
   window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
   $$("[data-top]").forEach(function (b) { b.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); }); });
   $$("[data-back]").forEach(function (b) {

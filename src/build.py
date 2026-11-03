@@ -8,7 +8,7 @@ from data import *
 
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist"
-VER = "0311261500"
+VER = "0311261600"
 TODAY = date.today().isoformat()
 E = lambda s: html.escape(str(s), quote=True)
 PAGES = []
@@ -34,6 +34,24 @@ ICON = {
  "chev": '<path d="M6 9l6 6 6-6"/>',
  "send": '<path d="M4 12l16-8-6 16-2.5-6.5z"/>',
 }
+ICON.update({
+ "beam": '<path d="M3 7h18M3 17h18M6 7l4 10M10 7l4 10M14 7l4 10"/>',
+ "building": '<path d="M3 21V10l9-6 9 6v11"/><path d="M9 21v-6h6v6"/>',
+ "box": '<path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/>',
+ "tank": '<ellipse cx="12" cy="5" rx="7" ry="2.5"/><path d="M5 5v14c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V5"/>',
+ "bolt": '<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
+ "tower": '<path d="M12 2v20M8 22l4-14 4 14M6 8h12M9 14h6"/>',
+ "bridge": '<path d="M2 18h20M4 18v-5a8 8 0 0 1 16 0v5M9 18v-4M15 18v-4"/>',
+ "fan": '<circle cx="12" cy="12" r="9"/><path d="M12 12c0-4 1-6 3-6s1 5-3 6zM12 12c4 0 6 1 6 3s-5 1-6-3zM12 12c0 4-1 6-3 6s-1-5 3-6zM12 12c-4 0-6-1-6-3s5-1 6 3z"/>',
+ "board": '<rect x="3" y="4" width="18" height="10" rx="1"/><path d="M8 14v7M16 14v7"/>',
+ "truck": '<path d="M2 16V7h11v9M13 10h5l3 3v3h-8"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/>',
+ "gear": '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>',
+ "weight": '<path d="M7 9h10l3 12H4z"/><circle cx="12" cy="5.5" r="2.5"/>',
+ "drop": '<path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/>',
+ "factory": '<path d="M2 21V11l6 4V11l6 4V7l8 4v10z"/><path d="M6 21v-3M11 21v-3M16 21v-3"/>',
+ "silo": '<path d="M5 21V8a7 4 0 0 1 14 0v13"/><path d="M5 12h14M5 16h14"/>',
+ "crane": '<path d="M4 21h8M7 21V5l13 3M7 9l4-4M7 5h-3M18 7.6V12"/><path d="M16.5 12h3v2h-3z"/>',
+})
 def ui(n, cls="ui"): return f'<svg class="{cls}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{ICON[n]}</g></svg>'
 
 def logo():
@@ -67,8 +85,17 @@ def fleet_cards(cin=""):
 def svc_cards(items=None):
     items = items or SERVICES
     return '<div class="svc">' + "".join(
-        f'<a class="sv" href="/uslugi/{s["slug"]}/"><b>{E(s["name"])}</b><span>{E(s["short"])}</span>'
-        f'<small>{" · ".join(f"{t} т" for t in s["fit"])}</small>{ui("arrow")}</a>' for s in items) + "</div>"
+        f'<a class="sv" href="/uslugi/{s["slug"]}/"><span class="sv-i">{ui(s["ic"])}</span><b>{E(s["name"])}</b><span>{E(s["short"])}</span>'
+        f'<small>{" · ".join(f"{t} т" for t in s["fit"])}</small>{ui("arrow", "ui sv-a")}</a>' for s in items) + "</div>"
+
+def cat_blocks():
+    """Три направления услуг со ссылками на все страницы — для главной и городов."""
+    out = []
+    for key, name, desc in SERVICE_CATS:
+        items = [s for s in SERVICES if s["cat"] == key]
+        li = "".join(f'<li><a href="/uslugi/{s["slug"]}/">{ui(s["ic"])}{E(s["name"])}</a></li>' for s in items)
+        out.append(f'<div class="cat"><div class="cat-h"><b>{name}</b><span>{desc}</span></div><ul>{li}</ul></div>')
+    return '<div class="cats">' + "".join(out) + "</div>"
 
 def brands_strip():
     return '<ul class="brands">' + "".join(f"<li>{b}</li>" for b in BRANDS) + "</ul>"
@@ -136,9 +163,10 @@ def faq_schema(faq):
 # ---------------------------------------------------------------- страница
 def nav_html():
     fl = "".join(f'<li><a href="{fleet_url(f)}">Автокран {f["t"]} тонн</a></li>' for f in FLEET)
+    sv = "".join(f'<li><a href="/uslugi/#{k}">{n}</a></li>' for k, n, _ in SERVICE_CATS)
     return f'''<nav class="nav" id="nav" aria-label="Меню"><ul>
 <li class="has"><a href="/avtokrany/">Автокраны</a><ul class="sub">{fl}</ul></li>
-<li><a href="/uslugi/">Услуги</a></li><li><a href="/goroda/">Города</a></li><li><a href="/stati/">Статьи</a></li>
+<li class="has"><a href="/uslugi/">Услуги</a><ul class="sub">{sv}</ul></li><li><a href="/goroda/">Города</a></li><li><a href="/stati/">Статьи</a></li>
 <li><a href="/o-kompanii/">О компании</a></li><li><a href="/kontakty/">Контакты</a></li></ul>
 <div class="nav-m">{btns("Здравствуйте! Нужен автокран.")}</div></nav>'''
 
@@ -169,7 +197,7 @@ def page(path, title, desc, body, schemas=(), crumbs=None, prio="0.7", kw=""):
 <meta property="og:type" content="website"><meta property="og:locale" content="ru_KZ"><meta property="og:site_name" content="{BRAND}">
 <meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{SITE_URL}{path}">
 <meta property="og:image" content="{SITE_URL}/assets/og.png"><meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#151a21">
+<meta name="theme-color" content="#0a1330">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.png" type="image/png"><link rel="apple-touch-icon" href="/assets/icon-192.png"><link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/onest-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/unbounded-cyrillic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -212,13 +240,13 @@ def build_home():
     tons = "".join(f'<li><a href="{fleet_url(f)}"><b>{f["t"]}</b><span>тонн</span></a></li>' for f in FLEET)
     body = f'''<section class="hero"><div class="wrap hero-in"><div class="hero-t">
 <p class="eyebrow">{" · ".join(BRANDS)}</p>
-<h1>Аренда автокранов 50–400 тонн по всему Казахстану</h1>
+<h1>Аренда автокранов <em>50–400 тонн</em> по всему Казахстану</h1>
 <p class="lead-t">Монтаж металлоконструкций и ЖБИ, погрузка и разгрузка, установка промышленного оборудования и сверхтяжёлые подъёмы. Подбираем кран по массе груза, вылету и высоте — с запасом по грузовысотной таблице.</p>
 {btns("Здравствуйте! Нужен автокран.", light=True)}</div>
 <div class="hero-v">{photo("/images/hero.jpg", f"Автокраны {BRAND}", "", "ph ph-hero")}<ul class="tons">{tons}</ul></div></div>
 <div class="wrap">{brands_strip()}</div></section>
 {sec("Автокраны в парке", fleet_cards(), "Пять классов грузоподъёмности — от монтажа на стройке до сверхтяжёлых промышленных подъёмов.", sid="park", link=("Все автокраны", "/avtokrany/"))}
-{sec("Услуги автокрана", svc_cards(), "Под каждую задачу — подходящий класс крана.", alt=True, link=("Все услуги", "/uslugi/"))}
+{sec("Услуги автокрана", cat_blocks(), "Под каждую задачу — подходящий класс крана. Выберите работу, чтобы узнать подробности.", alt=True, link=("Все услуги", "/uslugi/"))}
 {sec("Как мы работаем", steps_html())}
 {sec("От чего зависит стоимость", factors_html(), "Цену называем после уточнения задачи — так вы платите за подходящий кран, а не за лишний тоннаж.", alt=True)}
 {geo_sec()}
@@ -261,7 +289,7 @@ def build_fleet():
 
 def build_services():
     body = f'''{ph_hero("Услуги автокрана", "Монтаж, погрузка, подъём на высоту и сверхтяжёлые подъёмы — подбираем класс крана под задачу.", [("Услуги", "/uslugi/")], "Здравствуйте! Нужны услуги автокрана.")}
-{sec("Все услуги", svc_cards())}{lead_form()}'''
+{"".join(sec(n, svc_cards([x for x in SERVICES if x["cat"] == k]), d, alt=i % 2 == 1, sid=k) for i, (k, n, d) in enumerate(SERVICE_CATS))}{lead_form()}'''
     page("/uslugi/", f"Услуги автокрана по всему Казахстану — {BRAND}", "Монтаж металлоконструкций и ЖБИ, погрузка и разгрузка, монтаж оборудования, демонтаж и подъём грузов на высоту автокранами 50–400 тонн.",
          body, crumbs=[("Услуги", "/uslugi/")], prio="0.8", kw="услуги")
     for s in SERVICES:
@@ -271,7 +299,7 @@ def build_services():
         tons = "".join(f'<li><a href="{fleet_url(f)}"><b>{f["t"]} т</b><span>{units(f["n"])}</span></a></li>' for f in fl)
         body = f'''{ph_hero(E(s["name"]) + " автокраном", E(s["text"]), [("Услуги", "/uslugi/"), (s["name"], url)], f"Здравствуйте! Нужен автокран: {s['name'].lower()}.")}
 <section class="sec"><div class="wrap two"><div><h2>Как работаем</h2><ul class="ticks ticks-l">{pts}</ul></div><div><h2>Подходящие краны</h2><ul class="tons tons-l">{tons}</ul></div></div></section>
-{sec("Другие услуги", svc_cards([x for x in SERVICES if x is not s][:4]), alt=True)}
+{sec("Похожие услуги", svc_cards(([x for x in SERVICES if x["cat"] == s["cat"] and x is not s] + [x for x in SERVICES if x["cat"] != s["cat"]])[:4]), alt=True, link=("Все услуги", "/uslugi/"))}
 {sec("Частые вопросы", faq_html(FAQ[2:6]))}
 {lead_form()}'''
         page(url, f"{s['name']} автокраном по всему Казахстану — {BRAND}", f"{s['text'][:150].rstrip(',. ')}. Автокраны {', '.join(str(f['t']) for f in fl)} тонн.",
@@ -288,7 +316,7 @@ def build_cities():
         cfaq = faq + [x for x in FAQ if x[0] not in {q for q, _ in faq} and "по всему Казахстану" not in x[0]]
         body = f'''{ph_hero(f"Аренда автокрана {cin}", E(intro), [("Города", "/goroda/"), (name, url)], f"Здравствуйте! Нужен автокран, город {name}.")}
 {sec(f"Автокраны {cin}", fleet_cards(cin), "Выберите класс по массе груза и высоте подъёма.")}
-{sec("Услуги", svc_cards(), alt=True)}
+{sec("Услуги", cat_blocks(), alt=True)}
 {sec("Как мы работаем", steps_html())}
 {geo_sec(slug)}
 {sec("Частые вопросы", faq_html(cfaq))}
@@ -354,7 +382,7 @@ def build_files():
             "", "## Частые вопросы"] + [f"- {q} {a}" for q, a in FAQ] + ["", "## Статьи"] + [f"- {a['title']}: {SITE_URL}/stati/{a['slug']}/" for a in ARTICLES]
     (DIST / "llms.txt").write_text("\n".join(llms) + "\n", encoding="utf-8")
     (DIST / "site.webmanifest").write_text(json.dumps({"name": f"{BRAND} — аренда автокранов", "short_name": BRAND, "start_url": "/", "display": "standalone",
-        "background_color": "#151a21", "theme_color": "#151a21", "icons": [{"src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png"}]}, ensure_ascii=False), encoding="utf-8")
+        "background_color": "#0a1330", "theme_color": "#0a1330", "icons": [{"src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png"}]}, ensure_ascii=False), encoding="utf-8")
     # ассеты и база знаний для чата
     shutil.copytree(ROOT / "assets", DIST / "assets", dirs_exist_ok=True)
     css = (ROOT / "src" / "fonts.css").read_text(encoding="utf-8") + (ROOT / "src" / "styles.css").read_text(encoding="utf-8")

@@ -1,84 +1,86 @@
-# KRANPARK — аренда автокранов по всему Казахстану
+# Аренда крана — аренда автокранов по всему Казахстану
 
 > Аренда автокранов грузоподъёмностью 50, 70, 80, 100 и 400 тонн. Техника SANY, XCMG, Zoomlion. Работа по всему Казахстану.
 
 - Телефон и WhatsApp: +7 701 070 37 34
-- Сайт: https://www.kranpark.kz/
+- Сайт: https://www.arenda-krana.kz/
 
 ## Парк техники
-- Автокран 50 тонн — 4 единицы: https://www.kranpark.kz/avtokrany/avtokran-50-tonn/
-- Автокран 70 тонн — 2 единицы: https://www.kranpark.kz/avtokrany/avtokran-70-tonn/
-- Автокран 80 тонн — 2 единицы: https://www.kranpark.kz/avtokrany/avtokran-80-tonn/
-- Автокран 100 тонн — 3 единицы: https://www.kranpark.kz/avtokrany/avtokran-100-tonn/
-- Автокран 400 тонн — 1 единица: https://www.kranpark.kz/avtokrany/avtokran-400-tonn/
+- Автокран 50 тонн — 4 единицы: https://www.arenda-krana.kz/avtokrany/avtokran-50-tonn/
+- Автокран 70 тонн — 2 единицы: https://www.arenda-krana.kz/avtokrany/avtokran-70-tonn/
+- Автокран 80 тонн — 2 единицы: https://www.arenda-krana.kz/avtokrany/avtokran-80-tonn/
+- Автокран 100 тонн — 3 единицы: https://www.arenda-krana.kz/avtokrany/avtokran-100-tonn/
+- Автокран 400 тонн — 1 единица: https://www.arenda-krana.kz/avtokrany/avtokran-400-tonn/
 
 ## Услуги
-- Монтаж металлоконструкций (50, 70, 80, 100 т): https://www.kranpark.kz/uslugi/montazh-metallokonstrukciy/
-- Монтаж ЖБИ (50, 70, 80 т): https://www.kranpark.kz/uslugi/montazh-zhbi/
-- Погрузка и разгрузка (50, 70, 80, 100 т): https://www.kranpark.kz/uslugi/pogruzka-razgruzka/
-- Монтаж оборудования (50, 70, 80, 100, 400 т): https://www.kranpark.kz/uslugi/montazh-oborudovaniya/
-- Краны для строительства (50, 70, 80, 100 т): https://www.kranpark.kz/uslugi/stroitelstvo/
-- Монтаж ветрогенераторов (100, 400 т): https://www.kranpark.kz/uslugi/vetroenergetika/
-- Демонтаж конструкций (50, 70, 80, 100 т): https://www.kranpark.kz/uslugi/demontazh/
-- Подъём грузов на высоту (50, 70, 80, 100 т): https://www.kranpark.kz/uslugi/podem-na-vysotu/
-- Монтаж ангаров и складов (50, 70, 80 т): https://www.kranpark.kz/uslugi/montazh-angarov-i-skladov/
-- Монтаж модульных зданий (50, 70 т): https://www.kranpark.kz/uslugi/montazh-modulnyh-zdaniy/
-- Монтаж резервуаров и ёмкостей (70, 80, 100, 400 т): https://www.kranpark.kz/uslugi/montazh-rezervuarov/
-- Монтаж трансформаторов (50, 70, 80, 100 т): https://www.kranpark.kz/uslugi/montazh-transformatorov/
-- Монтаж опор ЛЭП и освещения (50, 70, 80 т): https://www.kranpark.kz/uslugi/montazh-opor-lep/
-- Монтаж мостовых конструкций (80, 100, 400 т): https://www.kranpark.kz/uslugi/montazh-mostovyh-konstrukciy/
-- Подъём вентиляции и кондиционеров (50, 70 т): https://www.kranpark.kz/uslugi/montazh-ventilyacii-i-kondicionerov/
-- Монтаж рекламных конструкций (50 т): https://www.kranpark.kz/uslugi/montazh-reklamnyh-konstrukciy/
-- Монтаж башен и мачт связи (50, 70, 80, 100 т): https://www.kranpark.kz/uslugi/montazh-bashen-svyazi/
-- Разгрузка тралов и длинномеров (50, 70, 80, 100 т): https://www.kranpark.kz/uslugi/razgruzka-tralov-i-dlinnomerov/
-- Погрузка контейнеров (50, 70 т): https://www.kranpark.kz/uslugi/pogruzka-konteynerov/
-- Перестановка оборудования (50, 70, 80, 100 т): https://www.kranpark.kz/uslugi/peremeshchenie-oborudovaniya/
-- Подъём негабаритных грузов (80, 100, 400 т): https://www.kranpark.kz/uslugi/negabaritnye-gruzy/
-- Нефтегазовые объекты (70, 80, 100, 400 т): https://www.kranpark.kz/uslugi/neftegazovye-obekty/
-- Энергетика (50, 70, 80, 100, 400 т): https://www.kranpark.kz/uslugi/energetika/
-- Промышленные предприятия (50, 70, 80, 100, 400 т): https://www.kranpark.kz/uslugi/promyshlennye-predpriyatiya/
-- Дороги и инфраструктура (50, 70, 80, 100, 400 т): https://www.kranpark.kz/uslugi/infrastruktura/
-- Элеваторы и агрообъекты (50, 70, 80, 100 т): https://www.kranpark.kz/uslugi/selskoe-hozyaystvo/
+- Монтаж металлоконструкций (50, 70, 80, 100 т): https://www.arenda-krana.kz/uslugi/montazh-metallokonstrukciy/
+- Монтаж ЖБИ (50, 70, 80 т): https://www.arenda-krana.kz/uslugi/montazh-zhbi/
+- Погрузка и разгрузка (50, 70, 80, 100 т): https://www.arenda-krana.kz/uslugi/pogruzka-razgruzka/
+- Монтаж оборудования (50, 70, 80, 100, 400 т): https://www.arenda-krana.kz/uslugi/montazh-oborudovaniya/
+- Краны для строительства (50, 70, 80, 100 т): https://www.arenda-krana.kz/uslugi/stroitelstvo/
+- Монтаж ветрогенераторов (100, 400 т): https://www.arenda-krana.kz/uslugi/vetroenergetika/
+- Демонтаж конструкций (50, 70, 80, 100 т): https://www.arenda-krana.kz/uslugi/demontazh/
+- Подъём грузов на высоту (50, 70, 80, 100 т): https://www.arenda-krana.kz/uslugi/podem-na-vysotu/
+- Монтаж ангаров и складов (50, 70, 80 т): https://www.arenda-krana.kz/uslugi/montazh-angarov-i-skladov/
+- Монтаж модульных зданий (50, 70 т): https://www.arenda-krana.kz/uslugi/montazh-modulnyh-zdaniy/
+- Монтаж резервуаров и ёмкостей (70, 80, 100, 400 т): https://www.arenda-krana.kz/uslugi/montazh-rezervuarov/
+- Монтаж трансформаторов (50, 70, 80, 100 т): https://www.arenda-krana.kz/uslugi/montazh-transformatorov/
+- Монтаж опор ЛЭП и освещения (50, 70, 80 т): https://www.arenda-krana.kz/uslugi/montazh-opor-lep/
+- Монтаж мостовых конструкций (80, 100, 400 т): https://www.arenda-krana.kz/uslugi/montazh-mostovyh-konstrukciy/
+- Подъём вентиляции и кондиционеров (50, 70 т): https://www.arenda-krana.kz/uslugi/montazh-ventilyacii-i-kondicionerov/
+- Монтаж рекламных конструкций (50 т): https://www.arenda-krana.kz/uslugi/montazh-reklamnyh-konstrukciy/
+- Монтаж башен и мачт связи (50, 70, 80, 100 т): https://www.arenda-krana.kz/uslugi/montazh-bashen-svyazi/
+- Разгрузка тралов и длинномеров (50, 70, 80, 100 т): https://www.arenda-krana.kz/uslugi/razgruzka-tralov-i-dlinnomerov/
+- Погрузка контейнеров (50, 70 т): https://www.arenda-krana.kz/uslugi/pogruzka-konteynerov/
+- Перестановка оборудования (50, 70, 80, 100 т): https://www.arenda-krana.kz/uslugi/peremeshchenie-oborudovaniya/
+- Подъём негабаритных грузов (80, 100, 400 т): https://www.arenda-krana.kz/uslugi/negabaritnye-gruzy/
+- Нефтегазовые объекты (70, 80, 100, 400 т): https://www.arenda-krana.kz/uslugi/neftegazovye-obekty/
+- Энергетика (50, 70, 80, 100, 400 т): https://www.arenda-krana.kz/uslugi/energetika/
+- Промышленные предприятия (50, 70, 80, 100, 400 т): https://www.arenda-krana.kz/uslugi/promyshlennye-predpriyatiya/
+- Дороги и инфраструктура (50, 70, 80, 100, 400 т): https://www.arenda-krana.kz/uslugi/infrastruktura/
+- Элеваторы и агрообъекты (50, 70, 80, 100 т): https://www.arenda-krana.kz/uslugi/selskoe-hozyaystvo/
 
 ## Стоимость
 - Цена зависит от грузоподъёмности, массы груза, вылета и высоты, времени работы, удалённости объекта и условий площадки; называется после уточнения задачи.
 
 ## Города
-- Алматы: https://www.kranpark.kz/goroda/almaty/
-- Астана: https://www.kranpark.kz/goroda/astana/
-- Шымкент: https://www.kranpark.kz/goroda/shymkent/
-- Караганда: https://www.kranpark.kz/goroda/karaganda/
-- Актобе: https://www.kranpark.kz/goroda/aktobe/
-- Тараз: https://www.kranpark.kz/goroda/taraz/
-- Павлодар: https://www.kranpark.kz/goroda/pavlodar/
-- Усть-Каменогорск: https://www.kranpark.kz/goroda/ust-kamenogorsk/
-- Семей: https://www.kranpark.kz/goroda/semey/
-- Атырау: https://www.kranpark.kz/goroda/atyrau/
-- Костанай: https://www.kranpark.kz/goroda/kostanay/
-- Кызылорда: https://www.kranpark.kz/goroda/kyzylorda/
-- Уральск: https://www.kranpark.kz/goroda/uralsk/
-- Петропавловск: https://www.kranpark.kz/goroda/petropavlovsk/
-- Актау: https://www.kranpark.kz/goroda/aktau/
-- Талдыкорган: https://www.kranpark.kz/goroda/taldykorgan/
-- Туркестан: https://www.kranpark.kz/goroda/turkestan/
-- Кокшетау: https://www.kranpark.kz/goroda/kokshetau/
-- Экибастуз: https://www.kranpark.kz/goroda/ekibastuz/
-- Темиртау: https://www.kranpark.kz/goroda/temirtau/
-- Жезказган: https://www.kranpark.kz/goroda/zhezkazgan/
-- Конаев: https://www.kranpark.kz/goroda/konaev/
-- Каскелен: https://www.kranpark.kz/goroda/kaskelen/
-- Талгар: https://www.kranpark.kz/goroda/talgar/
-- Есик: https://www.kranpark.kz/goroda/esik/
-- Балхаш: https://www.kranpark.kz/goroda/balkhash/
-- Жанаозен: https://www.kranpark.kz/goroda/zhanaozen/
-- Рудный: https://www.kranpark.kz/goroda/rudny/
-- Сатпаев: https://www.kranpark.kz/goroda/satpaev/
-- Риддер: https://www.kranpark.kz/goroda/ridder/
-- Степногорск: https://www.kranpark.kz/goroda/stepnogorsk/
+- Алматы: https://www.arenda-krana.kz/goroda/almaty/
+- Астана: https://www.arenda-krana.kz/goroda/astana/
+- Шымкент: https://www.arenda-krana.kz/goroda/shymkent/
+- Караганда: https://www.arenda-krana.kz/goroda/karaganda/
+- Актобе: https://www.arenda-krana.kz/goroda/aktobe/
+- Тараз: https://www.arenda-krana.kz/goroda/taraz/
+- Павлодар: https://www.arenda-krana.kz/goroda/pavlodar/
+- Усть-Каменогорск: https://www.arenda-krana.kz/goroda/ust-kamenogorsk/
+- Семей: https://www.arenda-krana.kz/goroda/semey/
+- Атырау: https://www.arenda-krana.kz/goroda/atyrau/
+- Костанай: https://www.arenda-krana.kz/goroda/kostanay/
+- Кызылорда: https://www.arenda-krana.kz/goroda/kyzylorda/
+- Уральск: https://www.arenda-krana.kz/goroda/uralsk/
+- Петропавловск: https://www.arenda-krana.kz/goroda/petropavlovsk/
+- Актау: https://www.arenda-krana.kz/goroda/aktau/
+- Талдыкорган: https://www.arenda-krana.kz/goroda/taldykorgan/
+- Туркестан: https://www.arenda-krana.kz/goroda/turkestan/
+- Кокшетау: https://www.arenda-krana.kz/goroda/kokshetau/
+- Экибастуз: https://www.arenda-krana.kz/goroda/ekibastuz/
+- Темиртау: https://www.arenda-krana.kz/goroda/temirtau/
+- Жезказган: https://www.arenda-krana.kz/goroda/zhezkazgan/
+- Конаев: https://www.arenda-krana.kz/goroda/konaev/
+- Каскелен: https://www.arenda-krana.kz/goroda/kaskelen/
+- Талгар: https://www.arenda-krana.kz/goroda/talgar/
+- Есик: https://www.arenda-krana.kz/goroda/esik/
+- Балхаш: https://www.arenda-krana.kz/goroda/balkhash/
+- Жанаозен: https://www.arenda-krana.kz/goroda/zhanaozen/
+- Рудный: https://www.arenda-krana.kz/goroda/rudny/
+- Сатпаев: https://www.arenda-krana.kz/goroda/satpaev/
+- Риддер: https://www.arenda-krana.kz/goroda/ridder/
+- Степногорск: https://www.arenda-krana.kz/goroda/stepnogorsk/
 
 ## Частые вопросы
 - Какие автокраны есть в парке? В парке 12 автокранов грузоподъёмностью 50, 70, 80, 100 и 400 тонн — техника SANY, XCMG и Zoomlion: 50 тонн — 4 единицы, 70 тонн — 2, 80 тонн — 2, 100 тонн — 3, 400 тонн — 1.
 - Вы работаете по всему Казахстану? Да. Работаем в Алматы, Астане, Шымкенте и других городах и регионах Казахстана. Выезд в другой город включает перебазировку крана — сроки и стоимость называем при заявке.
+- Вы работаете с юридическими и физическими лицами? Да, работаем и с компаниями, и с частными клиентами. Оплата — наличными или безналичным расчётом.
+- Какие способы оплаты? Наличный и безналичный расчёт. Порядок оплаты уточняйте у менеджера при заявке.
 - Сколько стоит аренда автокрана? Стоимость зависит от грузоподъёмности крана, массы груза, вылета и высоты подъёма, времени работы и удалённости объекта. Позвоните или напишите в WhatsApp — назовём цену под вашу задачу.
 - Как выбрать кран нужной грузоподъёмности? Грузоподъёмность в названии крана — максимальная, на минимальном вылете. Реальная допустимая масса зависит от вылета стрелы и высоты по грузовысотной таблице. Сообщите массу груза, расстояние от места стоянки крана до точки установки и высоту — подберём кран с запасом.
 - На какое время можно заказать кран? Время работы согласуем под задачу: разовый подъём, смена или весь этап работ. Минимальное время и порядок оплаты уточняйте при заявке.
@@ -87,6 +89,6 @@
 - Кран 400 тонн можно заказать в другой город? Да, но перебазировка крана 400 тонн требует отдельной логистики противовеса и согласования маршрута, поэтому такие работы планируют заранее.
 
 ## Статьи
-- Как выбрать автокран по грузоподъёмности: https://www.kranpark.kz/stati/kak-vybrat-avtokran/
-- Как подготовить площадку для работы автокрана: https://www.kranpark.kz/stati/podgotovka-ploshchadki/
-- Автокран 400 тонн: что нужно знать перед заказом: https://www.kranpark.kz/stati/avtokran-400-tonn-chto-nuzhno-znat/
+- Как выбрать автокран по грузоподъёмности: https://www.arenda-krana.kz/stati/kak-vybrat-avtokran/
+- Как подготовить площадку для работы автокрана: https://www.arenda-krana.kz/stati/podgotovka-ploshchadki/
+- Автокран 400 тонн: что нужно знать перед заказом: https://www.arenda-krana.kz/stati/avtokran-400-tonn-chto-nuzhno-znat/

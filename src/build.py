@@ -213,10 +213,14 @@ def nav_html():
 <div class="nav-m">{btns("Здравствуйте! Нужен автокран.")}</div></nav>'''
 
 def gtag():
+    """Единый тег Google (контейнер GTM из аккаунта Google Ads) — сразу после <head>, один на страницу."""
+    if TAG_ID:
+        return (f'<script async src="https://www.googletagmanager.com/gtm.js?id={TAG_ID}"></script>\n'
+                "<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n</script>\n")
     ids = [x for x in (GA_ID, GADS_ID) if x]
     if not ids: return ""
     cfg = "".join(f"gtag('config','{x}');" for x in ids)
-    return f'<script async src="https://www.googletagmanager.com/gtag/js?id={ids[0]}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag("js",new Date());{cfg}</script>'
+    return f'<script async src="https://www.googletagmanager.com/gtag/js?id={ids[0]}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag("js",new Date());{cfg}</script>\n'
 
 def page(path, title, desc, body, schemas=(), crumbs=None, prio="0.7", kw=""):
     PAGES.append((path, prio, title, kw))
@@ -230,7 +234,7 @@ def page(path, title, desc, body, schemas=(), crumbs=None, prio="0.7", kw=""):
     doc = f'''<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
+{gtag()}<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{E(title)}</title>
 <meta name="description" content="{E(desc)}">
@@ -244,7 +248,7 @@ def page(path, title, desc, body, schemas=(), crumbs=None, prio="0.7", kw=""):
 <link rel="preload" href="/assets/fonts/onest-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/unbounded-cyrillic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/styles.css?v={VER}">
-{ld}{gtag()}
+{ld}
 </head>
 <body>
 <a class="skip" href="#main">К содержимому</a>

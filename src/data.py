@@ -9,6 +9,7 @@ SITE_URL = "https://www.arenda-krana.kz"   # основной адрес — с 
 PHONE_DISPLAY = "+7 701 070 37 34"
 PHONE_TEL = "+77010703734"
 WA_NUMBER = "77010703734"
+TAG_ID = "GTM-MP9QC5ZN"   # единый тег Google из аккаунта Google Ads
 GA_ID = ""            # ← G-XXXXXXX, когда клиент даст тег Analytics
 GADS_ID = ""          # ← AW-XXXXXXX
 GADS_CALL_LABEL = ""  # ← ярлык конверсии «Звонок»
